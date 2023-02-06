@@ -19,7 +19,14 @@ const obs = Observable.create(subscriber => {
 //será executado 50% das vezes);
 
 obs.subscribe(
-    valor => console.log(`Valor: ${valor}`),
-    erro => console.log(`Erro: ${erro}`),
-    () => console.log('Fim!')
+    valor => console.log(`Valor: ${valor}`), //callback sucesso
+    erro => console.log(`Erro: ${erro}`), //callback erro
+    () => console.log('Fim!') //callback complete
 )
+
+//escrevendo o subscribe de outra forma:
+
+obs.subscribe({
+    next: response => console.log(response),
+    error: error => console.log(error)
+})
